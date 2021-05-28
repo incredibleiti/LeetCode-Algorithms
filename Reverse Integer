@@ -1,0 +1,55 @@
+Problem Statement can be found at: https://leetcode.com/problems/reverse-integer/submissions/
+
+Below is the Brute Force Solution (It can definitely be optimized). This is what I have come up in 10 minutes.
+
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <algorithm>
+
+class Solution {
+public:
+    int reverse(int x) {
+        int p = 0;     
+        if(!checknuminrange(x))
+        {
+            return 0;
+        }
+        else
+        {   
+            int p = x>0?1:2;   //positive is 1, negative is 2
+            stringstream ss;
+            ss << x;
+            string str;
+            ss >> str;
+            
+            ::reverse(str.begin(), str.end());
+            ss.clear();
+
+            ss << str;
+            ss >> x;
+            
+            if(!checknuminrange(x))
+            {
+                return 0;
+            }
+            else
+            {
+                return p==1?x:-x;
+            }
+        }
+    }
+    
+    bool checknuminrange (int x)
+    {
+        if(x>=2147483647 || x <= -2147483647)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+};
