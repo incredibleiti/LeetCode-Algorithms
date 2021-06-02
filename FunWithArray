@@ -1,0 +1,18 @@
+Problem Statement can be found at: https://leetcode.com/explore/featured/card/fun-with-arrays/525/inserting-items-into-an-array/3253/
+
+Solution:
+class Solution(object):
+      def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: None Do not return anything, modify nums1 in-place instead.
+        """
+        
+        for i in range(n): # "last n elements are set to 0 and should be ignored"
+            nums1.remove(0)
+        
+        nums1.extend(nums2) # "nums1 has a length of m + n"
+        nums1.sort() # "Merge nums1 and nums2 into a single array sorted in non-decreasing order"
